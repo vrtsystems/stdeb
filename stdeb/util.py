@@ -1495,7 +1495,7 @@ RULES_MAIN = """\
 # %(date822)s
 %(exports)s
 %(percent_symbol)s:
-        dh $@ %(sequencer_options)s
+\tdh $@ %(sequencer_options)s
 
 %(override_dh_auto_clean)s
 
@@ -1504,31 +1504,31 @@ RULES_MAIN = """\
 %(override_dh_auto_install)s
 
 override_dh_python2:
-        dh_python2 --no-guessing-versions
+\tdh_python2 --no-guessing-versions
 
 %(override_dh_python3)s
 
 %(binary_target_lines)s
 """
 
-RULES_OVERRIDE_CLEAN_TARGET_PY2 = "        python setup.py clean -a"
-RULES_OVERRIDE_CLEAN_TARGET_PY3 = "        python3 setup.py clean -a"
+RULES_OVERRIDE_CLEAN_TARGET_PY2 = "\tpython setup.py clean -a"
+RULES_OVERRIDE_CLEAN_TARGET_PY3 = "\tpython3 setup.py clean -a"
 RULES_OVERRIDE_CLEAN_TARGET = """
 override_dh_auto_clean:
 %(rules_override_clean_target_pythons)s
-        find . -name \*.pyc -exec rm {} \;
+\tfind . -name \*.pyc -exec rm {} \;
 """
 
-RULES_OVERRIDE_BUILD_TARGET_PY2 = "        python setup.py build --force"
-RULES_OVERRIDE_BUILD_TARGET_PY3 = "        python3 setup.py build --force"
+RULES_OVERRIDE_BUILD_TARGET_PY2 = "\tpython setup.py build --force"
+RULES_OVERRIDE_BUILD_TARGET_PY3 = "\tpython3 setup.py build --force"
 RULES_OVERRIDE_BUILD_TARGET = """
 override_dh_auto_build:
 %(rules_override_build_target_pythons)s
 """
 
-RULES_OVERRIDE_INSTALL_TARGET_PY2 = "        python setup.py install --force --root=debian/%(package)s --no-compile -O0 --install-layout=deb %(install_prefix)s %(no_python2_scripts_cli_args)s"
+RULES_OVERRIDE_INSTALL_TARGET_PY2 = "\tpython setup.py install --force --root=debian/%(package)s --no-compile -O0 --install-layout=deb %(install_prefix)s %(no_python2_scripts_cli_args)s"
 
-RULES_OVERRIDE_INSTALL_TARGET_PY3 = "        python3 setup.py install --force --root=debian/%(package3)s --no-compile -O0 --install-layout=deb %(install_prefix)s %(no_python3_scripts_cli_args)s"
+RULES_OVERRIDE_INSTALL_TARGET_PY3 = "\tpython3 setup.py install --force --root=debian/%(package3)s --no-compile -O0 --install-layout=deb %(install_prefix)s %(no_python3_scripts_cli_args)s"
 
 RULES_OVERRIDE_INSTALL_TARGET = """
 override_dh_auto_install:
@@ -1538,7 +1538,7 @@ override_dh_auto_install:
 
 RULES_OVERRIDE_PYTHON3 = """
 override_dh_python3:
-        dh_python3
+\tdh_python3
 %(scripts)s
 """
 
